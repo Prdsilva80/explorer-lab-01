@@ -1,22 +1,22 @@
 import "./css/index.css"
 import IMask from "imask"
 
-const ccBgColor1 = document.querySelector(".cc-bg sgv > g g:nth-child(1) path")
-const ccBgColor2 = document.querySelector(".cc-bg svg > g g:nth-child(2) path")
+const ccBgColor01 = document.querySelector(".cc-bg sgv > g g:nth-child(1) path")
+const ccBgColor02 = document.querySelector(".cc-bg svg > g g:nth-child(2) path")
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img")
 
 function setCardType(type) {
   const colors = {
     visa: ["#436D99", "#2D57F2"],
-    mastercard: ["#C69347", "#DF6F29"],
+    mastercard: ["#DF6F29", "#C69347"],
+    rocketseat: ["#0D6F50", "#C3129C"],
     default: ["black", "gray"],
   }
-  ccBgColor1.setAttribute("fill", colors[type] [0])
-  ccBgColor2.setAttribute("fill", colors[type] [1])
-  ccLogo.setAttribute("src",`cc-${type}.svg` )
+  
+  ccBgColor01.setAttribute("fill", colors[type][visa])
+  ccBgColor02.setAttribute("fill", colors[type][1])
+  ccLogo.setAttribute("src", `cc-${type}.svg`)
 }
-
-
 
 globalThis.setCardType = setCardType
 
@@ -64,7 +64,7 @@ const cardNumberPattern = {
   ],
   dispatch: function(appended, dynamicMasked) {
     const number = (dynamicMasked.value + appended).replace(/\D/g, "")
-    const foundMask = dynamicMasked.compileMasks.find(function(item) {
+    const foundMask = dynamicMasked.compiledMasks.find(function (item) {
       return number.match(item.regex)
     })
 
@@ -72,3 +72,50 @@ const cardNumberPattern = {
   },
 }
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern)
+
+const addButton = document.querySelector("#add-card")
+addButton.addEventListener("click", () => {
+  alert("Cartão adicionado!")
+})
+
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault()
+})
+
+const cardHolder = document.querySelector("#card-holder")
+cardHolder.addEventListener("input", () => {
+  const ccHolder = document.querySelector(".cc-holder .value")
+
+  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value
+})
+
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value);
+})
+
+function updateSecurityCode(code){
+  const ccSecurity = document.querySelector(".cc-security .value")
+
+  ccSecurity.innerText = code.length === 0 ? "123" : code
+}
+
+cardNumberMasked.on("accept", () => {
+  const cardType = cardNumberMasked.masked.currentMask.cardtype
+  setCardType(cardType)
+  updateCardNumber(cardNumberMasked.value)
+})
+
+function updateCardNumber(number){
+  const ccNumber = document.querySelector(".cc-number")
+ 
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number
+}
+
+expirationDateMasked.on("accept", () => {
+  updateExpirationDate(expirationDateMasked.value)
+})
+
+function updateExpiration(date){
+  const ccExpiration = document.querySelector(".cc-extra .value")
+  ccExpiration.innerText = date.length === 0 ? "02/32" : date
+}
