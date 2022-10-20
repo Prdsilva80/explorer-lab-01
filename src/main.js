@@ -1,7 +1,7 @@
 import "./css/index.css"
 import IMask from "imask"
 
-const ccBgColor01 = document.querySelector(".cc-bg sgv > g g:nth-child(1) path");
+const ccBgColor01 = document.querySelector(".cc-bg svg > g g:nth-child(1) path");
 const ccBgColor02 = document.querySelector(".cc-bg svg > g g:nth-child(2) path");
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
 
@@ -53,7 +53,7 @@ const cardNumberPattern = {
     },
     {
       mask: "0000 0000 0000 0000",
-      regex:/(^5[1-5]\d{0,2}^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/, 
+      regex:/(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/, 
       cardtype: "mastercard",
     },
     {
@@ -99,7 +99,7 @@ function updateSecurityCode(code){
 };
 
 cardNumberMasked.on("accept", () => {
-  const cardType = cardNumberMasked.masked.currentMask.cardType;
+  const cardType = cardNumberMasked.masked.currentMask.cardtype;
   setCardType(cardType);
   updateCardNumber(cardNumberMasked.value);
 });
