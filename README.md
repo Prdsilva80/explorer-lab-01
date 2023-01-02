@@ -32,7 +32,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=vscode,figma,html,css,js,nodejs,vite," />
+    <img src="https://skillicons.dev/icons?i=vscode,figma,html,css,js,nodejs,vite,git,github" />
   </a>
 </p>
 
@@ -48,6 +48,11 @@ Para rodar o projeto basta dar o comando: npm run dev no terminal;
 ## 🔖 Layout
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/file/gpqavL469k0pPUGOmAQEM9/Explorer-Lab-%2301/duplicate). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
+
+---
+
+## Contato
+<a href = "mailto:probertos717@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" target="_blank">
 
 ---
 
